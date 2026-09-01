@@ -2,6 +2,17 @@
 
 Login reutilizable de Syntra para aplicaciones React Native y Expo. Incluye la pantalla, validación de correo/teléfono, recuperación de acceso, registro opcional y un adaptador para Supabase.
 
+## Demo visual
+
+Instala las dependencias del ejemplo una sola vez y levanta Expo Web:
+
+```bash
+npm run demo:install
+npm run demo:web
+```
+
+Abre la dirección que muestre Expo, normalmente `http://localhost:8081`. Puedes usar cualquier correo válido y la contraseña `syntra123`; la autenticación es simulada y no modifica datos reales.
+
 ## Instalación local
 
 ```json

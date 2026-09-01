@@ -1,3 +1,6 @@
 node_modules/
 dist/
 *.tgz
+example/.expo/
+example/dist-demo/
+example/node_modules/

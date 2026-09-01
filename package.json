@@ -12,6 +12,8 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
+    "demo:install": "npm --prefix example install",
+    "demo:web": "npm --prefix example run web",
     "prepare": "npm run build"
   },
   "peerDependencies": {
