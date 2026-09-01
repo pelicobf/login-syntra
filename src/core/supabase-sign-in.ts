@@ -16,6 +16,7 @@ export function translateAuthError(message: string): string {
   if (message.includes('Invalid login credentials')) return 'Correo, teléfono o contraseña incorrectos.';
   if (message.includes('Email not confirmed')) return 'La cuenta aún no está confirmada.';
   if (message.includes('Password should be at least')) return 'La contraseña es demasiado corta.';
+  if (message.includes('Failed to fetch')) return 'No fue posible conectar con el servicio de acceso.';
   return message;
 }
 
@@ -31,7 +32,6 @@ export function createSupabaseSignIn(
 
   return async (identifier, password) => {
     let email = identifier.trim();
-
     if (!email.includes('@')) {
       const { data: resolvedEmail, error: lookupError } = await supabase.rpc(phoneLookupRpc, {
         [phoneParameter]: normalizePhone(email),
@@ -41,7 +41,6 @@ export function createSupabaseSignIn(
       }
       email = resolvedEmail;
     }
-
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     return { error: error ? translateError(error.message) : null };
   };

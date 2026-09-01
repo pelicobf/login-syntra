@@ -1,6 +1,3 @@
-import type { ImageSource } from 'expo-image';
-import type { StyleProp, ViewStyle } from 'react-native';
-
 export type SignInResult = { error: string | null };
 export type SignInHandler = (identifier: string, password: string) => Promise<SignInResult>;
 
@@ -16,6 +13,7 @@ export type LoginText = Partial<{
   identifierPlaceholder: string;
   passwordPlaceholder: string;
   submit: string;
+  submitting: string;
   forgotPassword: string;
   forgotInstructions: string;
   firstTime: string;
@@ -34,15 +32,13 @@ export type LoginTheme = Partial<{
   error: string;
 }>;
 
-export type LoginScreenProps = {
+export type LoginScreenBaseProps = {
   onSignIn: SignInHandler;
   onCreateBusiness?: () => void;
   onForgotPassword?: (identifier: string) => void;
-  logoSource?: ImageSource;
   support?: LoginSupport;
   text?: LoginText;
   theme?: LoginTheme;
-  style?: StyleProp<ViewStyle>;
   minimumPhoneDigits?: number;
   testID?: string;
 };

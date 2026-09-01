@@ -1,0 +1,69 @@
+.syntra-login-screen {
+  --syntra-login-background: #102a43;
+  --syntra-login-input-light: #eaf1fb;
+  --syntra-login-input-dark: #0f273d;
+  --syntra-login-input-border: #1f3a54;
+  --syntra-login-primary: #4cadee;
+  --syntra-login-primary-hover: #3d9fe2;
+  --syntra-login-text: #fff;
+  --syntra-login-muted: #8fa6bc;
+  --syntra-login-error: #f0a8a2;
+  position: fixed;
+  inset: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: auto;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  box-sizing: border-box;
+  background: var(--syntra-login-background);
+  color: var(--syntra-login-text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+.syntra-login-screen * { box-sizing: border-box; }
+.syntra-login-content { width: min(420px, 100%); display: flex; flex-direction: column; align-items: center; }
+.syntra-login-logo { display: block; width: min(300px, 100%); height: auto; aspect-ratio: 1125 / 372; object-fit: contain; margin-bottom: 24px; }
+.syntra-login-subtitle { margin: 0 0 32px; color: var(--syntra-login-muted); font-size: 15px; font-weight: 600; text-align: center; }
+.syntra-login-form { width: 100%; }
+.syntra-login-form input {
+  display: block; width: 100%; height: 58px; margin: 0 0 16px; border: 1px solid transparent; border-radius: 14px;
+  padding: 0 18px; outline: 0; font: 500 15px Arial, Helvetica, sans-serif;
+}
+.syntra-login-form input:first-of-type { background: var(--syntra-login-input-light); color: #1f2933; }
+.syntra-login-form input[type="password"] { background: var(--syntra-login-input-dark); border-color: var(--syntra-login-input-border); color: var(--syntra-login-text); }
+.syntra-login-form input:focus { border-color: var(--syntra-login-primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--syntra-login-primary) 20%, transparent); }
+.syntra-login-form input:disabled { opacity: .75; }
+.syntra-login-error { width: 100%; margin: -3px 0 10px; color: var(--syntra-login-error); font-size: 13px; }
+.syntra-login-submit {
+  width: 100%; height: 58px; margin-top: 8px; border: 0; border-radius: 14px; display: flex; align-items: center; justify-content: center; gap: 9px;
+  background: var(--syntra-login-primary); color: #fff; font-size: 17px; font-weight: 800; cursor: pointer; transition: background .12s ease, transform .12s ease;
+}
+.syntra-login-submit:hover:not(:disabled) { background: var(--syntra-login-primary-hover); }
+.syntra-login-submit:active:not(:disabled) { transform: scale(.99); }
+.syntra-login-submit:disabled { opacity: .75; cursor: wait; }
+.syntra-login-spinner { width: 17px; height: 17px; border: 2px solid rgba(255,255,255,.45); border-top-color: #fff; border-radius: 50%; animation: syntra-login-spin .8s linear infinite; }
+.syntra-login-forgot { min-height: 44px; margin-top: 9px; padding: 0 10px; border: 0; background: transparent; color: var(--syntra-login-muted); font-size: 13px; font-weight: 600; text-decoration: underline; cursor: pointer; }
+.syntra-login-forgot:hover { color: #dceaf5; }
+.syntra-login-help { width: 100%; margin-top: 4px; padding: 14px 16px; border: 1px solid var(--syntra-login-input-border); border-radius: 12px; background: var(--syntra-login-input-dark); }
+.syntra-login-help p { margin: 0 0 7px; color: #b7c6d6; font-size: 12.5px; line-height: 1.45; }
+.syntra-login-help a { display: block; margin-top: 6px; color: var(--syntra-login-primary); font-size: 13px; font-weight: 700; text-decoration: none; }
+.syntra-login-register { width: 100%; margin-top: 14px; }
+.syntra-login-register > div { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.syntra-login-register > div span { height: 1px; flex: 1; background: #28445d; }
+.syntra-login-register > div b { color: #7890a6; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.syntra-login-register > button { width: 100%; height: 54px; border: 1px solid #426078; border-radius: 14px; background: transparent; color: #dceaf5; font-size: 15px; font-weight: 800; cursor: pointer; }
+.syntra-login-register > button:hover { border-color: #74bdeb; background: #102b42; }
+.syntra-login-visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+@keyframes syntra-login-spin { to { transform: rotate(360deg); } }
+@media (max-width: 420px) {
+  .syntra-login-screen { padding: 20px 24px; }
+  .syntra-login-logo { width: min(300px, calc(100vw - 32px)); margin-bottom: 20px; }
+  .syntra-login-subtitle { margin-bottom: 27px; font-size: 13px; }
+  .syntra-login-form input, .syntra-login-submit { height: 54px; }
+}
+@media (max-height: 600px) {
+  .syntra-login-screen { align-items: start; padding-top: 20px; padding-bottom: 20px; }
+  .syntra-login-logo { width: 250px; margin-bottom: 12px; }
+  .syntra-login-subtitle { margin-bottom: 18px; }
+}

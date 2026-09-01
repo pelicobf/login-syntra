@@ -1,17 +1,23 @@
 # @syntra/login
 
-Login reutilizable de Syntra para aplicaciones React Native y Expo. Incluye la pantalla, validación de correo/teléfono, recuperación de acceso, registro opcional y un adaptador para Supabase.
+Login multiplataforma de Syntra para React web y React Native/Expo. Incluye implementaciones específicas por plataforma, validación compartida, recuperación de acceso, registro opcional y un adaptador para Supabase.
+
+El mismo import selecciona automáticamente HTML/CSS en bundlers web y componentes nativos en Expo:
+
+```tsx
+import { LoginScreen } from '@syntra/login';
+```
 
 ## Demo visual
 
-Instala las dependencias del ejemplo una sola vez y levanta Expo Web:
+Instala las dependencias del ejemplo una sola vez y levanta Vite:
 
 ```bash
 npm run demo:install
 npm run demo:web
 ```
 
-Abre la dirección que muestre Expo, normalmente `http://localhost:8081`. Puedes usar cualquier correo válido y la contraseña `syntra123`; la autenticación es simulada y no modifica datos reales.
+Abre la dirección que muestre Vite, normalmente `http://localhost:5173`. Puedes usar cualquier correo válido y la contraseña `syntra123`; la autenticación es simulada y no modifica datos reales.
 
 ## Instalación local
 
@@ -23,7 +29,14 @@ Abre la dirección que muestre Expo, normalmente `http://localhost:8081`. Puedes
 }
 ```
 
-La aplicación consumidora debe tener `react`, `react-native` y `expo-image`. Si usa el adaptador incluido, también debe tener `@supabase/supabase-js`.
+Todos los consumidores deben tener `react`. Las aplicaciones Expo deben tener además `react-native` y `expo-image`; los proyectos web no necesitan instalarlos. Si se usa el adaptador incluido, el proyecto debe tener `@supabase/supabase-js`.
+
+También existen rutas explícitas como respaldo para bundlers que no seleccionen condiciones automáticamente:
+
+```tsx
+import { LoginScreen } from '@syntra/login/web';
+import { LoginScreen } from '@syntra/login/native';
+```
 
 ## Uso con Supabase
 
